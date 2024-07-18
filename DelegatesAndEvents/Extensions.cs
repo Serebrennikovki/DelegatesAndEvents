@@ -6,9 +6,11 @@ public static class Extensions
 {
     public static T GetMax<T>(this IEnumerable<T> collection, Func<T, float> convertToNumber)
     {
-        var result = collection.FirstOrDefault();
-        foreach (var item in collection)
+        var enumerator = collection.GetEnumerator();
+        var result = default(T);
+        while (enumerator.MoveNext())
         {
+            var item = (T)enumerator.Current;
             result = convertToNumber(result) < convertToNumber(item) ? item : result;
         }
         return result;

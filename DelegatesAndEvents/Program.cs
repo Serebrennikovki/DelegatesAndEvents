@@ -11,8 +11,9 @@ class Program
         var readerDir = new DirectoryReader(directory);
         readerDir.FileFound += WriteFileNameToConsole;
         readerDir.Start();
-        Console.WriteLine(arr.GetMax(ConvertToNumber));
         readerDir.FileFound -= WriteFileNameToConsole;
+        
+        Console.WriteLine(arr.GetMax(ConvertToNumber));
         Console.ReadLine();
     }
 
